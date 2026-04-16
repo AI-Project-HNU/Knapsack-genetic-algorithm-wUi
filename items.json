@@ -1,1 +1,52 @@
-{}
+{
+  "Small Dataset (5 items, Cap 30)": {
+    "capacity": 30,
+    "description": "Classic textbook example with 5 items.",
+    "items": [
+      {"name": "Laptop",      "weight": 10, "value": 60},
+      {"name": "Camera",      "weight": 5,  "value": 40},
+      {"name": "Headphones",  "weight": 3,  "value": 20},
+      {"name": "Watch",       "weight": 2,  "value": 30},
+      {"name": "Tablet",      "weight": 8,  "value": 50}
+    ]
+  },
+
+  "Medium Dataset (10 items, Cap 80)": {
+    "capacity": 80,
+    "description": "A balanced mid-size problem.",
+    "items": [
+      {"name": "Gold Bar",     "weight": 15, "value": 100},
+      {"name": "Diamond",      "weight": 3,  "value": 90},
+      {"name": "Ruby",         "weight": 4,  "value": 70},
+      {"name": "Emerald",      "weight": 5,  "value": 60},
+      {"name": "Sapphire",     "weight": 2,  "value": 50},
+      {"name": "Painting",     "weight": 12, "value": 80},
+      {"name": "Sculpture",    "weight": 10, "value": 65},
+      {"name": "Coin",         "weight": 1,  "value": 20},
+      {"name": "Medal",        "weight": 2,  "value": 25},
+      {"name": "Vase",         "weight": 7,  "value": 45}
+    ]
+  },
+
+  "Large Dataset (15 items, Cap 150)": {
+    "capacity": 150,
+    "description": "A harder problem requiring stronger GA tuning.",
+    "items": [
+      {"name": "Laptop",        "weight": 10, "value": 60},
+      {"name": "Camera",        "weight": 5,  "value": 40},
+      {"name": "Phone",         "weight": 3,  "value": 35},
+      {"name": "Tablet",        "weight": 8,  "value": 50},
+      {"name": "Monitor",       "weight": 20, "value": 75},
+      {"name": "Keyboard",      "weight": 4,  "value": 20},
+      {"name": "Speaker",       "weight": 6,  "value": 30},
+      {"name": "Jacket",        "weight": 7,  "value": 45},
+      {"name": "Boots",         "weight": 5,  "value": 38},
+      {"name": "First Aid Kit", "weight": 4,  "value": 55},
+      {"name": "Radio",         "weight": 3,  "value": 42},
+      {"name": "Rope",          "weight": 2,  "value": 18},
+      {"name": "Compass",       "weight": 1,  "value": 25},
+      {"name": "Food Pack",     "weight": 9,  "value": 60},
+      {"name": "Water Bottle",  "weight": 3,  "value": 30}
+    ]
+  }
+}
