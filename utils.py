@@ -95,3 +95,46 @@ def generate_random_items(n=10, weight_range=(1,20), value_range=(5,100)):
       })
    return items
 
+def load_datasets(filepath=None):
+
+    if filepath is None:
+        base_dir=os.path.dirname(os.path.abspath(__file__))
+        filepath=os.path.join(base_dir,"items.json")
+    try:
+        with open(filepath,"r",encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
+    except json.JSONDecodeError as e:
+        print(f"failed to parse JSON FILE in {filepath}:{e}")
+        return {}
+
+
+def save_results_to_file(filepath,results_text):
+    with open(filepath,"w", encoding="utf-8" ) as f:
+        f.write(results_text)
+
+
+        
+def format_solution(solution, problem_type="0-1 Knapsack"):
+    lines = [
+        f"{'='*50}",
+        f"  {problem_type} - Best Solution",
+        f"{'='*50}",
+        f"  Total Value  : {solution['total_value']:.2f}",
+        f"  Total Weight : {solution['total_weight']:.2f}",
+        f"{'='*50}",
+        f"  Selected Items:",
+    ]
+    
+    if not solution["selected_items"]:
+        lines.append("  (none)")
+    else:
+        for item in solution["selected_items"]:
+            qty_str = f" x{item['quantity']}" if item["quantity"] > 1 else ""
+            lines.append(
+                f"    • {item['name']}{qty_str}"
+                f"  [W:{item['weight']}  V:{item['value']}]"
+            )
+    lines.append(f"{'='*50}")
+    return "\n".join(lines)
