@@ -6,7 +6,7 @@ CS212 Artificial Intelligence - Question #19
 import random
 
 def create_chromosome(num_items):
-    return [randint(0,1) for _ in range(num_items)]
+    return [random.randint(0,1) for _ in range(num_items)]
 
 def fitness_function(items,chromosomes,capacity):
     total_weight = 0.0
@@ -14,7 +14,7 @@ def fitness_function(items,chromosomes,capacity):
     for gene,items in zip(chromosomes,items):
         if gene==1:
             total_weight+=items["weights"]
-            total_value+=item["value"]
+            total_value+=items["value"]
         if total_value<=capacity:
             return total_value
         else:
