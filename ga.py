@@ -60,5 +60,64 @@ class GeneticAlgorithm:
         )
         return [copy.deepcopy(chrom) for _, chrom in sorted_pairs[:elite_count]]
     
-    
+    def evolve(self, progress_callback=None):
+
+        self._stop_flag = False
+        self.fitness_history = []
+        self.avg_fitness_history = []
+        self.best_chromosome = None
+        self.best_fitness = float("-inf")
+
+        population = self.initialize_population()
+
+        for generation in range(self.generations):
+            if self._stop_flag:
+                break
+
+            fitnesses = self.evaluate_population(population)
+            gen_best_idx = max(range(len(fitnesses)), key=lambda i: fitnesses[i])
+            gen_best_fitness = fitnesses[gen_best_idx]
+            gen_avg_fitness = sum(fitnesses) / len(fitnesses)
+
+            self.fitness_history.append(gen_best_fitness)
+            self.avg_fitness_history.append(gen_avg_fitness)
+
+            if gen_best_fitness > self.best_fitness:
+                self.best_fitness = gen_best_fitness
+                self.best_chromosome = copy.deepcopy(population[gen_best_idx])
+
+            if progress_callback:       #USE THIS IN GUI
+                progress_callback(generation, self.best_fitness, self.best_chromosome)
+
+            elites = self.apply_elitism(population, fitnesses)
+
+            next_population = elites[:]
+
+            while len(next_population) < self.population_size:
+                parent_a = self.tournament_selection(population, fitnesses)
+                parent_b = self.tournament_selection(population, fitnesses)
+
+                if random.random() < self.crossover_rate:
+                    child_a, child_b = self.crossover_fn(parent_a, parent_b)
+                else:
+                    child_a, child_b = copy.deepcopy(parent_a), copy.deepcopy(parent_b)
+
+                child_a = self.mutation_fn(child_a, self.mutation_rate)
+                child_b = self.mutation_fn(child_b, self.mutation_rate)
+
+                next_population.append(child_a)
+                if len(next_population) < self.population_size:
+                    next_population.append(child_b)
+
+            population = next_population
+
+        return (
+            self.best_chromosome,
+            self.best_fitness,
+            self.fitness_history,
+            self.avg_fitness_history,
+        )
+
+    def stop(self):     #USE THIS FUNCTION IN GUI
+        self._stop_flag = True
 
