@@ -47,3 +47,18 @@ class GeneticAlgorithm:
         return [self.fitness_fn(chrom) for chrom in population]
     
 
+    def tournament_selection(self, population, fitnesses):
+        competitors_idx= random.sample(range(len(population)), self.tournament_size)
+        best_idx=max(competitors_idx, key=lambda i:fitnesses[i])
+        return copy.deepcopy(population[best_idx])
+    
+
+    def apply_elitism(self, population, fitnesses):
+        elite_count = max(1, int(self.elitism_ratio * self.population_size))
+        sorted_pairs = sorted(
+            zip(fitnesses, population), key=lambda x: x[0], reverse=True
+        )
+        return [copy.deepcopy(chrom) for _, chrom in sorted_pairs[:elite_count]]
+    
+    
+
