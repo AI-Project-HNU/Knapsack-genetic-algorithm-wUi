@@ -97,4 +97,3 @@ def decode_solutions(chromosome, items):
 
 
 
-

@@ -40,11 +40,11 @@ class GeneticAlgorithm:
 
     def initialize_population(self):
        
-        return [self.chromosome_factory() for _ in range(self.population_size)]
+        return [self.chromosome_factory() for _ in range(self.population_size)]# type: ignore
 
     def evaluate_population(self, population):
       
-        return [self.fitness_fn(chrom) for chrom in population]
+        return [self.fitness_fn(chrom) for chrom in population]# type: ignore
     
 
     def tournament_selection(self, population, fitnesses):
@@ -98,12 +98,12 @@ class GeneticAlgorithm:
                 parent_b = self.tournament_selection(population, fitnesses)
 
                 if random.random() < self.crossover_rate:
-                    child_a, child_b = self.crossover_fn(parent_a, parent_b)
+                    child_a, child_b = self.crossover_fn(parent_a, parent_b)# type: ignore
                 else:
                     child_a, child_b = copy.deepcopy(parent_a), copy.deepcopy(parent_b)
 
-                child_a = self.mutation_fn(child_a, self.mutation_rate)
-                child_b = self.mutation_fn(child_b, self.mutation_rate)
+                child_a = self.mutation_fn(child_a, self.mutation_rate)# type: ignore
+                child_b = self.mutation_fn(child_b, self.mutation_rate)# type: ignore
 
                 next_population.append(child_a)
                 if len(next_population) < self.population_size:
@@ -120,4 +120,3 @@ class GeneticAlgorithm:
 
     def stop(self):     #USE THIS FUNCTION IN GUI
         self._stop_flag = True
-
