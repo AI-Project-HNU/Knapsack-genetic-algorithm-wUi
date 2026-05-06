@@ -1,74 +1,33 @@
 # ⬡ Knapsack GA Solver
 
-> 🎒 A modern desktop GUI for solving **0-1** and **Unbounded Knapsack Problems** using a **Genetic Algorithm**  
-> 🎓 Built for *CS212 Artificial Intelligence · Q19*
+A professional, high-performance **Genetic Algorithm (GA)** solver for the Knapsack Problem. This application features a modern dark-themed GUI built with Python's `tkinter` and provides real-time visualization of the evolutionary process.
 
-[![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org)
-[![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](LICENSE)
-[![Tkinter](https://img.shields.io/badge/GUI-Tkinter-5B8DEF?style=flat)](https://docs.python.org/3/library/tkinter.html)
-[![Matplotlib](https://img.shields.io/badge/Visualization-Matplotlib-5B8DEF?style=flat)](https://matplotlib.org)
+Developed as part of the **CS212 Artificial Intelligence** coursework.
 
----
+## 🚀 Features
 
-## 📋 Table of Contents
+* **Dual Problem Support**: Solve both **0-1 Knapsack** (each item used once) and **Unbounded Knapsack** (items can be reused) problems.
+* **Modern Dark UI**: Custom-styled widgets including a splash screen, progress bars, and "badges" for key metrics.
+* **Real-time Visualization**: Dynamic fitness tracking chart using `matplotlib` to show how the solution improves over generations.
+* **Flexible Data Management**:
+    * Load predefined datasets from JSON.
+    * Add, edit, or delete items directly within an interactive table.
+    * Generate random test cases on the fly.
+* **Hyperparameter Tuning**: Full control over GA parameters, including population size, generation count, mutation rate, and crossover rate.
+* **Export Capabilities**: Save your best results and selected items to a `.txt` file for further analysis.
 
-- [✨ Features](#-features)
-- [🖼️ Screenshots](#️-screenshots)
-- [🚀 Quick Start](#-quick-start)
-- [📦 Installation](#-installation)
-- [🎮 Usage Guide](#-usage-guide)
-- [⚙️ GA Parameters](#️-ga-parameters)
-- [📁 Project Structure](#-project-structure)
-- [🔧 Configuration](#-configuration)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
-- [🙏 Acknowledgments](#-acknowledgments)
+## 🛠️ Technical Stack
 
----
+* **Language**: Python 3
+* **GUI Framework**: `Tkinter` (with custom threading for non-blocking UI)
+* **Data Visualization**: `Matplotlib`
+* **Algorithm**: Genetic Algorithm (Selection, Crossover, Mutation, and Fitness Evaluation)
 
-## ✨ Features
+## 📥 Installation & Setup
 
-| Feature | Description |
-|---------|-------------|
-| 🔀 **Dual Problem Support** | Solve both **0-1 Knapsack** (items once) and **Unbounded Knapsack** (items repeated) |
-| 🧬 **Genetic Algorithm Engine** | Configurable evolution: population, generations, mutation & crossover rates |
-| 🎨 **Modern Dark UI** | Clean, customizable interface built with tkinter and custom themed widgets |
-| 📊 **Live Fitness Visualization** | Real-time matplotlib chart showing convergence over generations |
-| ✏️ **Interactive Item Editor** | Add, edit (double-click), delete, or randomize items directly in the table |
-| 📤 **Dataset Management** | Load predefined problem instances or export results to `.txt` |
-| ⏱️ **Responsive Execution** | GA runs in background thread with progress bar and stop capability |
-| ✅ **Input Validation** | Robust checks for items, capacity, and GA parameters before execution |
+Follow these steps to get the project running on your local machine.
 
----
-
-## 🖼️ Screenshots
-
-> *Placeholders — replace with actual screenshots from your application*
-
-<div align="center">
-
-![Main Interface](docs/screenshots/main_ui.png)  
-*Main dashboard with items table, parameters, and results*
-
-![Fitness Chart](docs/screenshots/fitness_chart.png)  
-*Live convergence plot during GA execution*
-
-![Results Export](docs/screenshots/export_results.png)  
-*Formatted solution output with export option*
-
-</div>
-
----
-
-## 🚀 Quick Start
-
+### 1. Clone the Repository
 ```bash
-# 1. Clone the repository
-git clone https://github.com/yourusername/knapsack-ga-solver.git
+git clone [https://github.com/YOUR_USERNAME/knapsack-ga-solver.git](https://github.com/YOUR_USERNAME/knapsack-ga-solver.git)
 cd knapsack-ga-solver
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Launch the application
-python main.py
